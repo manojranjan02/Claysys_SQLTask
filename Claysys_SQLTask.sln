@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35122.118
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Claysys_SQLTask", "Claysys_SQLTask.csproj", "{085F9570-2DE7-4B33-9CEA-F0173E2ED394}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{085F9570-2DE7-4B33-9CEA-F0173E2ED394}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{085F9570-2DE7-4B33-9CEA-F0173E2ED394}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{085F9570-2DE7-4B33-9CEA-F0173E2ED394}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{085F9570-2DE7-4B33-9CEA-F0173E2ED394}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {075E4D8A-C273-47CF-9F31-1D16736AF7C3}
+	EndGlobalSection
+EndGlobal
