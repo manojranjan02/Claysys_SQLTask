@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authentication;
 using System.Data;
 using System.Security.Claims;
 using System.Data.SqlClient;
-using Microsoft.Data.SqlClient;
+
 
 namespace Claysys_SQLTask.Repository
 {
@@ -13,7 +13,7 @@ namespace Claysys_SQLTask.Repository
         private readonly string _connectionString;
         public LoginRepository(IConfiguration configuration)
         {
-            _connectionString = configuration.GetConnectionString("DefaultConnection");
+            _connectionString = configuration.GetConnectionString("DevConnection");
         }
 
         public bool IsValidUser(LoginModel loginModel,int EmpId, string UserName, string Role, IHttpContextAccessor httpContextAccessor)

@@ -1,0 +1,108 @@
+
+
+.ml-auto, .mx-auto {
+    margin-left: auto !important;
+}
+
+@media (min-width: 992px) {
+    .ml-auto, .mx-auto {
+        margin-left: auto !important;
+    }
+
+}
+
+@media (min-width: 992px) {
+    .navbar-expand-lg .navbar-nav .dropdown-menu {
+        position: absolute;
+        /* top: 6px; */
+       /* left: -216%;*/
+    }
+}
+@media (min-width: 992px) {
+    .dropdown-menu.sr {
+        position: absolute;
+        left: -246px;
+        top: 55px;
+        /*width: 1331px;*/
+      /*  width:100px;*/
+    }
+}
+
+.nav-item:hover > .dropdown-menu {
+   display :block;
+}
+
+@media (min-width: 1200px) {
+    .dropdown-menu.sr {
+        width: 1331px; 
+    }
+}
+
+/* For screens wider than 1400px */
+@media (min-width: 1400px) {
+    .dropdown-menu.sr {
+        left: -497px;
+        width: 1874px;
+    }
+}
+
+html, body, body.home {
+    font-family: "Roboto", sans-serif !important;
+    margin: 0 auto;
+    padding: 0;
+}
+a.nav-link {
+    color: black;
+}
+/* new Css For Next level drop down and dropdown hover*/
+.dropdown-menu {
+    box-shadow: none !important;
+}
+
+/*.nav-item:hover > .dropdown-menu {
+    display: block;
+   
+}*/
+/**/
+/*.dropdown-menu > li > .Subnav {
+    height: 200px;
+}*/
+
+.dropdown-menu {
+    box-shadow: none !important;
+}
+
+.position-absolute {
+    position: absolute !important;
+}
+
+.navbar-brand span {
+    font-size: 12px;
+    top: 20px;
+
+}
+
+
+.navbar-brand img {
+    max-width: 100px;
+    object-fit: cover;
+}
+
+.navbar-brand {
+    float: left;
+    height: auto !important;
+    padding: 15px 15px;
+    font-size: 18px;
+    line-height: 20px;
+}
+.settingDropDown {
+    position: absolute;
+    /* box-shadow: -1px 8px 16px 0px rgba(0, 0, 0, 0.2); */
+    width: max-content;
+    /* left: 100%; */
+    right: 74%;
+    z-index: 1;
+    padding: 2px ;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+    background-color: white;
+}

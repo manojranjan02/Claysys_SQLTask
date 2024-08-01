@@ -30,13 +30,15 @@ namespace Claysys_SQLTask.Controllers
             string Role = null;
             LoginRepository loginRepo = new LoginRepository(_configuration);
             bool IsValid = loginRepo.IsValidUser(loginModel, EmpId, UserName, Role,_httpContextAccessor);
-            var session = _httpContextAccessor.HttpContext.Session;
-            EmpId = (int)session.GetInt32("Id");
-            UserName = session.GetString("UserName");
-            Role = session.GetString("Role");
+           
             if (IsValid)
             {
-                return View();
+                var session = _httpContextAccessor.HttpContext.Session;
+                EmpId = (int)session.GetInt32("EmpId");
+                UserName = session.GetString("UserName");
+                Role = session.GetString("Role");
+
+                return RedirectToAction("TaskTracker", "Task");
             }
             
             return View(loginModel);

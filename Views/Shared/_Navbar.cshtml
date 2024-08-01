@@ -1,0 +1,124 @@
+﻿@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ClaysysForms</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Claysys_SQLTask.styles.css" asp-append-version="true" />
+    <link href="~/css/navbar.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <div>
+                        <img class="main-logo" alt="IT Consulting Services Company - ClaySys Technologies" title="IT Consulting Services Company - ClaySys Technologies" src="/Pic/claysys-logo.png">
+                        <span class="position-absolute">®</span>
+                    </div>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between" id="navbarSupportedContent">
+                    <ul class="navbar-nav flex-grow-1" id="navbar-nav">
+                        <li>Task Tracker</li>
+                    </ul>
+                    <div class="GearandName">
+                      @*   <button class="GearIcon" style="all:unset" id="SettingDropdownbtn">
+                            <a  class="settings-icon">
+                                <i class="fa-solid fa-gear" style="color:black"></i>
+                            </a>
+                            <div class="settingDropDown " style="display:none">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item"><a class="nav-link">Shared with...</a></li>
+                                    <li class="nav-item"><a class="nav-link">Edit page</a></li>
+                                    <li class="nav-item"><a class="nav-link">Add a page</a></li>
+                                    <li class="nav-item"><a class="nav-link">Add an app</a></li>
+                                    <li class="nav-item"><a href="" id="siteContentLink"  class="nav-link">Site Content</a></li>
+                                    <li class="nav-item"><a class="nav-link">Site settings</a></li>
+                                </ul>
+                            </div>
+                        </button> *@
+                        <div class="Usename">
+                            <a href="#" class="settings-icon" style="color:black ; text-decoration:none ; font-size:15px">
+                                <p> @User.Identity.Name</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <br />
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - ClaysysForms - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+
+<style>
+    .Subnav {
+        position: absolute !important;
+        display: none;
+        top: 0 !important;
+        right: 0;
+        left: 100%;
+        border: 1px solid rgba(0, 0, 0, .15);
+        width: 100%;
+    }
+
+    .settings-icon {
+        font-size: 20px;
+        right: 0;
+    }
+
+    .GearandName {
+        display: flex;
+        float: right;
+        position: relative;
+        top: 10px;
+    }
+
+    .GearIcon {
+        margin-right: 10px;
+    }
+
+    .Usename {
+        margin-left: 10px;
+        position: relative;
+        top: 4px;
+    }
+
+    a {
+        color: black;
+        text-decoration: none; 
+    }
+
+        a:hover {
+            color: black;
+        }
+
+    html, body, body.home {
+        font-family: "Roboto", sans-serif !important;
+        margin: 0 auto;
+        padding: 0;
+    }
+</style>
