@@ -1,0 +1,148 @@
+﻿@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+@{
+    Layout = "~/Views/Shared/_Navbar.cshtml";
+}
+<head>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+</head>
+
+<body>
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h5>Tasks</h5>
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="clientName">Client Name <span class="text-danger">*</span></label>
+
+                                <select id="clientDropdown" class="form-control">
+                                    <option value="">Select Client</option>
+                                </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="projectName">Project Name <span class="text-danger">*</span></label>
+                            <select id="projectDropdown" class="form-control">
+                            <option selected>Select</option>
+                            <!-- Add other options here -->
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="etaHours">ETA (Hours) <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="etaHours" />
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="taskDate">Date <span class="text-danger">*</span></label>
+                        <input type="date" class="form-control" id="taskDate"/>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="assignedBy">Assigned By <span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="assignedBy" />
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="taskTitle">Title <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="taskTitle" />
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="assignedTo">Assigned To <span class="text-danger">*</span></label>
+                        <div class="input-group">
+                                <input type="text" class="form-control" id="assignedTo" value="@User.Identity.Name" />
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea class="form-control" id="description" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-secondary">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+</body>
+</html>
+<style>
+    .card-header {
+        background-color: #f8f9fa;
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+
+    .form-group label span.text-danger {
+        color: red;
+    }
+
+    .form-control:focus {
+        box-shadow: none;
+        border-color: #007bff;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+</style>
+
+<script>
+    $(document).ready(function () {
+        // Populate clients dropdown
+        $.get('/api/data/clients', function (clients) {
+            var $clientDropdown = $('#clientDropdown');
+            clients.forEach(function (client) {
+                $clientDropdown.append('<option value="' + client.id + '">' + client.name + '</option>');
+            });
+        });
+
+        // On client change, populate projects dropdown
+        $('#clientDropdown').change(function () {
+            var clientId = $(this).val();
+            var $projectDropdown = $('#projectDropdown');
+            $projectDropdown.empty().append('<option value="">Select Project</option>');
+
+            if (clientId) {
+                $.get('/api/data/projects/' + clientId, function (projects) {
+                    projects.forEach(function (project) {
+                        $projectDropdown.append('<option value="' + project.id + '">' + project.name + '</option>');
+                    });
+                });
+            }
+        });
+    });
+    // Get today's date
+    const today = new Date().toISOString().split('T')[0];
+
+    // Set the value of the input to today's date
+    document.getElementById('taskDate').value = today;
+</script>
+
+
