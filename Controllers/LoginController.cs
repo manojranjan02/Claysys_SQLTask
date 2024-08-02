@@ -44,6 +44,12 @@ namespace Claysys_SQLTask.Controllers
             return View(loginModel);
             
         }
-        
+
+        [HttpGet]
+        public IActionResult LoginTest()
+        {
+            return View();
+        }
+
     }
 }
