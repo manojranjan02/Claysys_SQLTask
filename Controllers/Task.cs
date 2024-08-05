@@ -1,4 +1,5 @@
 ﻿using Claysys_SQLTask.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using static Claysys_SQLTask.Models.TaskModel;
 
@@ -11,7 +12,8 @@ namespace Claysys_SQLTask.Controllers
         {
             _repo = taskRepo;
         }
-
+        [Authorize(Roles = "User")]
+        [Route("TaskTracker")]
         public IActionResult TaskTracker()
         {
             return View();

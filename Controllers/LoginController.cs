@@ -44,12 +44,33 @@ namespace Claysys_SQLTask.Controllers
             return View(loginModel);
             
         }
-
         [HttpGet]
-        public IActionResult LoginTest()
+        public IActionResult Loginpage()
         {
             return View();
         }
 
+        [HttpPost]
+        public IActionResult Loginpage(LoginModel loginModel)
+        {
+            int EmpId = 0;
+            string UserName = null;
+            string Role = null;
+            LoginRepository loginRepo = new LoginRepository(_configuration);
+            bool IsValid = loginRepo.IsValidUser(loginModel, EmpId, UserName, Role, _httpContextAccessor);
+
+            if (IsValid)
+            {
+                var session = _httpContextAccessor.HttpContext.Session;
+                EmpId = (int)session.GetInt32("EmpId");
+                UserName = session.GetString("UserName");
+                Role = session.GetString("Role");
+
+                return RedirectToAction("TaskTracker", "Task");
+            }
+
+            return View(loginModel);
+
+        }
     }
 }
