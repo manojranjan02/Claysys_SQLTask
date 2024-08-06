@@ -29,5 +29,11 @@ namespace Claysys_SQLTask.Controllers
         {
             return Ok(_repo.GetProjects(clientId));
         }
+
+        [Route("Home")]
+        public IActionResult Home()
+        {
+            return View();
+        }
     }
 }
